@@ -12,11 +12,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Shahala Rahshima | Python Developer",
-  description: "Portfolio of Shahala Rahshima",
+export const metadata = {
+  title: "Shahala Rahshima | Portfolio",
+  description:
+    "Shahala Rahshima A – Python Developer, AI/ML Enthusiast, and Multimedia & Web Technology student.",
   verification: {
     google: "Y3jLWG_Ly0DrApEsyRdgKtrgU7IOQEVKZ4UC-cHNpDk",
+  },
+  icons: {
+    icon: "/logo.png",
   },
 };
 

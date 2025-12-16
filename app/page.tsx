@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ImageModal from "./components/ImageModal";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+
 
 /* ================= PROJECT DATA ================= */
 const projects = [
@@ -519,32 +521,37 @@ export default function Home() {
       </motion.section>
 
 
-      <footer className="py-6 text-center text-sm text-gray-500">
-        © 2025 Shahala Rahshima A
+      <footer className="py-10 text-center border-t border-white/10">
+        <p className="mb-4 text-sm">© 2025 Shahala Rahshima A</p>
+
+        <div className="flex justify-center gap-6 text-2xl">
+          <a
+            href="https://github.com/Shahala10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition"
+          >
+            <FaGithub />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition"
+          >
+            <FaLinkedin />
+          </a>
+
+          <a
+            href="mailto:shahalarahshima@gmail.com"
+            className="hover:scale-110 transition"
+          >
+            <FaEnvelope />
+          </a>
+        </div>
       </footer>
 
-      <div className="fixed right-6 bottom-6 flex flex-col gap-4 z-50">
-        <a
-          href="https://github.com/Shahala10"
-          target="_blank"
-          className="border p-3 rounded-full hover:bg-white hover:text-black transition"
-        >
-          GH
-        </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          className="border p-3 rounded-full hover:bg-white hover:text-black transition"
-        >
-          IN
-        </a>
-        <a
-          href="mailto:shahalarahshima@gmail.com"
-          className="border p-3 rounded-full hover:bg-white hover:text-black transition"
-        >
-          @
-        </a>
-      </div>
 
     </main>
   );
