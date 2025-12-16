@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import ImageModal from "./components/ImageModal";
 
 /* ================= PROJECT DATA ================= */
 const projects = [
@@ -35,19 +36,46 @@ const projects = [
 /* ================= EVENTS ================= */
 const events = [
   {
-    title: "SAWIT.AI LEARNATHON",
-    desc: "Participated in a national-level learnathon focused on Generative AI.",
-    year: "2024",
-  },
-  {
-    title: "AI & Python Workshop",
-    desc: "Hands-on workshop on Python programming and AI fundamentals.",
-    year: "2024",
-  },
-  {
-    title: "Teachers’ Day – Academic Dean Role",
+    title: "Academic Dean – Teachers’ Day",
     desc: "Selected as Academic Dean for a day at Nilgiri College of Arts and Science.",
     year: "2024",
+    image: "/events/academic dean.jpg",
+  },
+  {
+    title: "Career Guidance Program",
+    desc: "Participated in a career guidance and mentoring program.",
+    year: "2024",
+    image: "/events/CareerGuidance.png",
+  },
+  {
+    title: "Collectorate Visit",
+    desc: "Award from the District Collectorate.",
+    year: "2024",
+    image: "/events/Collectorate.png",
+  },
+  {
+    title: "Drone Workshop",
+    desc: "Hands-on workshop on drone technology.",
+    year: "2024",
+    image: "/events/Drone Workshop.png",
+  },
+  {
+    title: "Internship at High Court",
+    desc: "Internship experience at the High Court.",
+    year: "2024",
+    image: "/events/Internship at Highcourt.png",
+  },
+  {
+    title: "KISE – 5 Days Workshop",
+    desc: "Five-day intensive skill development workshop.",
+    year: "2024",
+    image: "/events/Kise(5days workshop).png",
+  },
+  {
+    title: "Proficiency Award",
+    desc: "Received proficiency recognition.",
+    year: "2023",
+    image: "/events/Proficiency.jpg",
   },
 ];
 
@@ -68,31 +96,70 @@ const awards = [
 /* ================= CERTIFICATES ================= */
 const certificates = [
   {
-    title: "Professional Diploma in AI & Robotics",
-    org: "Certified Program",
+    title: "ChatGPT Certification",
+    org: "GUVI",
+    image: "/certificates/GuviCertification_CHATGPT.jpg",
   },
   {
-    title: "UI/UX Design Certification",
-    org: "Tutedude",
+    title: "Python Programming",
+    org: "Infosys",
+    image: "/certificates/Python infosys.jpg",
   },
   {
-    title: "Python Programming Certification",
-    org: "Kaisan Institute of Skill & Excellence",
+    title: "Python Programming",
+    org: "GUVI",
+    image: "/certificates/Python(Guvi).jpg",
+  },
+  {
+    title: "SAWiT AI Program",
+    org: "SAWiT",
+    image: "/certificates/SAWiT.jpg",
+  },
+  {
+    title: "Canva Essentials",
+    org: "Canva",
+    image: "/certificates/shahala-shaz-canva-essentials-certificate.jpg",
+  },
+  {
+    title: "Graphic Design Essentials",
+    org: "Canva",
+    image: "/certificates/shahala-shaz-graphic-design-essentials-certificate.jpg",
+  },
+  {
+    title: "Simplilearn Certification",
+    org: "Simplilearn",
+    image: "/certificates/Simplilearn Certificate.jpg",
+  },
+  {
+    title: "Soft Skills",
+    org: "TCS",
+    image: "/certificates/TCS SOFT SKILL CERTIFICATE.jpg",
+  },
+  {
+    title: "UI/UX Design",
+    org: "UI/UX",
+    image: "/certificates/UI_UX.jpg",
   },
 ];
 
 /* ================= ANIMATION ================= */
 const sectionVariant = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } },
 };
 
 /* ================= MAIN PAGE ================= */
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <main className="bg-black text-white min-h-screen font-sans">
+    <main
+      className={`min-h-screen font-sans transition-colors duration-300 ${darkMode ? "bg-black text-white" : "bg-gray-100 text-black"
+        }`}
+    >
+
 
       {/* ================= NAVBAR ================= */}
       <nav className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
@@ -122,6 +189,13 @@ export default function Home() {
           >
             ☰
           </button>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="border px-3 py-2 rounded text-sm transition hover:bg-white hover:text-black"
+          >
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+
         </div>
 
         {menuOpen && (
@@ -144,20 +218,27 @@ export default function Home() {
         variants={sectionVariant}
         className="h-screen flex items-center justify-center text-center px-6"
       >
-        <div>
-          <p className="uppercase tracking-widest text-gray-400">Hello, I am</p>
+        <div className="flex flex-col items-center">
+          <img
+            src="/profile/profile.jpeg"
+            alt="Shahala Rahshima A"
+            className="w-40 h-40 rounded-full object-cover border border-white/20 mb-6"
+          />
+
+          <p className="uppercase tracking-widest text-gray-400">
+            Hello, I am
+          </p>
+
           <h1 className="text-4xl md:text-6xl font-bold mt-4">
             Shahala Rahshima A
           </h1>
+
           <p className="mt-4 text-xl text-gray-400">
             Python Developer | AI/ML Enthusiast
           </p>
-          <p className="mt-6 max-w-2xl text-gray-300">
-            Multimedia and Web Technology student and a fresher, actively working
-            on projects to strengthen my skills. Passionate about Python and
-            Django development, with a strong interest in AI and Machine Learning.
-          </p>
+          
         </div>
+
       </motion.section>
 
       {/* ================= ABOUT ================= */}
@@ -191,17 +272,27 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="bg-neutral-900 py-24"
+        className="max-w-5xl mx-auto px-6 py-24"
       >
-        <div className="max-w-5xl mx-auto px-6">
-          <h3 className="text-3xl md:text-4xl font-bold mb-10">Education</h3>
-          <div className="space-y-6">
+        <h3 className="text-3xl md:text-4xl font-bold mb-16 text-center">
+          Education Timeline
+        </h3>
+
+        <div className="relative border-l border-white/30 pl-10 space-y-12">
+          <div className="relative">
+            <span className="absolute -left-[22px] top-2 w-4 h-4 rounded-full bg-white" />
             <div className="border border-white/10 rounded-xl p-6">
               <h4 className="font-semibold text-lg">
                 BSc Multimedia & Web Technology (AI & Robotics)
               </h4>
-              <p className="text-gray-400">Nilgiri College of Arts and Science</p>
+              <p className="text-gray-400">
+                Nilgiri College of Arts and Science
+              </p>
             </div>
+          </div>
+
+          <div className="relative">
+            <span className="absolute -left-[22px] top-2 w-4 h-4 rounded-full bg-white" />
             <div className="border border-white/10 rounded-xl p-6">
               <h4 className="font-semibold text-lg">
                 Mathematics & Biology
@@ -213,6 +304,7 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
+
 
       {/* ================= SKILLS ================= */}
       <motion.section
@@ -346,17 +438,22 @@ export default function Home() {
         <h3 className="text-3xl md:text-4xl font-bold mb-10">Certificates</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {certificates.map((c, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="border border-white/10 rounded-xl p-6"
-            >
-              <h4 className="font-semibold">{c.title}</h4>
-              <p className="text-gray-400 text-sm mt-2">{c.org}</p>
+            <motion.div key={i} whileHover={{ scale: 1.05 }}
+              className="border border-white/10 rounded-xl overflow-hidden">
+              <img src={c.image} alt={c.title}
+                className="w-full h-48 object-cover cursor-pointer"
+                onClick={() => setSelectedImage(c.image)} />
+              <div className="p-6">
+                <h4 className="font-semibold">{c.title}</h4>
+                <p className="text-gray-400 text-sm mt-2">{c.org}</p>
+              </div>
             </motion.div>
           ))}
         </div>
       </motion.section>
+      {selectedImage && (
+        <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />
+      )}
 
       {/* ================= CONTACT ================= */}
       <motion.section
@@ -372,9 +469,34 @@ export default function Home() {
         <p className="text-gray-500 mt-2">India</p>
       </motion.section>
 
+
       <footer className="py-6 text-center text-sm text-gray-500">
         © 2025 Shahala Rahshima A
       </footer>
+
+      <div className="fixed right-6 bottom-6 flex flex-col gap-4 z-50">
+        <a
+          href="https://github.com/Shahala10"
+          target="_blank"
+          className="border p-3 rounded-full hover:bg-white hover:text-black transition"
+        >
+          GH
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          className="border p-3 rounded-full hover:bg-white hover:text-black transition"
+        >
+          IN
+        </a>
+        <a
+          href="mailto:shahalarahshima@gmail.com"
+          className="border p-3 rounded-full hover:bg-white hover:text-black transition"
+        >
+          @
+        </a>
+      </div>
+
     </main>
   );
 }
