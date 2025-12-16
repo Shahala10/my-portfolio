@@ -41,7 +41,7 @@ const events = [
     title: "Academic Dean – Teachers’ Day",
     desc: "Selected as Academic Dean for a day at Nilgiri College of Arts and Science.",
     year: "2024",
-    image: "/events/academic dean.png",
+    image: "/events/academic-dean.png",
   },
   {
     title: "Career Guidance Program",
@@ -53,7 +53,7 @@ const events = [
     title: "Drone Workshop",
     desc: "Hands-on workshop on drone technology.",
     year: "2024",
-    image: "/events/Drone Workshop.png",
+    image: "/events/Drone-Workshop.png",
   },
   {
     title: "KISE – 5 Days Workshop",
@@ -154,7 +154,7 @@ export default function Home() {
 
 
       {/* ================= NAVBAR ================= */}
-      <nav className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur border-b border-white/10">
+      <nav className={`fixed top-0 w-full z-50 backdrop-blur border-b transition-colors ${darkMode ? "bg-black/70 border-white/10" : "bg-white/70 border-black/10"}`}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="font-bold text-xl">Shahala Rahshima A</h1>
 
@@ -176,17 +176,27 @@ export default function Home() {
               Download Resume
             </a>
           </div>
+          
+          <div className="flex items-center gap-3 md:hidden">
+            {/* Dark mode toggle */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="border px-3 py-2 rounded text-sm transition hover:bg-white hover:text-black"
+            >
+              {darkMode ? "🌙" : "☀️"}
+            </button>
 
-          <button
-            className="md:hidden text-2xl"
-            onClick={() => setMenuOpen(!menuOpen)}
-            onClick={() => setDarkMode(!darkMode)}
-            className="border px-3 py-2 rounded text-sm transition hover:bg-white hover:text-black"
-          >
-            ☰
-          </button>
+            {/* Menu toggle */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-2xl"
+            >
+              ☰
+            </button>
+          </div>
 
         </div>
+
 
         {menuOpen && (
           <div className="md:hidden bg-black border-t border-white/10 px-6 py-4 space-y-4">
