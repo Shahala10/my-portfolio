@@ -39,19 +39,13 @@ const events = [
     title: "Academic Dean – Teachers’ Day",
     desc: "Selected as Academic Dean for a day at Nilgiri College of Arts and Science.",
     year: "2024",
-    image: "/events/academic dean.jpg",
+    image: "/events/academic dean.png",
   },
   {
     title: "Career Guidance Program",
     desc: "Participated in a career guidance and mentoring program.",
-    year: "2024",
+    year: "2025",
     image: "/events/CareerGuidance.png",
-  },
-  {
-    title: "Collectorate Visit",
-    desc: "Award from the District Collectorate.",
-    year: "2024",
-    image: "/events/Collectorate.png",
   },
   {
     title: "Drone Workshop",
@@ -60,22 +54,10 @@ const events = [
     image: "/events/Drone Workshop.png",
   },
   {
-    title: "Internship at High Court",
-    desc: "Internship experience at the High Court.",
-    year: "2024",
-    image: "/events/Internship at Highcourt.png",
-  },
-  {
     title: "KISE – 5 Days Workshop",
     desc: "Five-day intensive skill development workshop.",
     year: "2024",
     image: "/events/Kise(5days workshop).png",
-  },
-  {
-    title: "Proficiency Award",
-    desc: "Received proficiency recognition.",
-    year: "2023",
-    image: "/events/Proficiency.jpg",
   },
 ];
 
@@ -98,49 +80,57 @@ const certificates = [
   {
     title: "ChatGPT Certification",
     org: "GUVI",
-    image: "/certificates/GuviCertification_CHATGPT.jpg",
+    image: "/certificates/ChatGPT_for_Everyone.png",
   },
   {
     title: "Python Programming",
     org: "Infosys",
-    image: "/certificates/Python infosys.jpg",
+    image: "/certificates/Python infosys.png",
   },
   {
     title: "Python Programming",
     org: "GUVI",
-    image: "/certificates/Python(Guvi).jpg",
+    image: "/certificates/Python(Guvi).png",
   },
   {
     title: "SAWiT AI Program",
     org: "SAWiT",
-    image: "/certificates/SAWiT.jpg",
+    image: "/certificates/SAWiT AI Program.png",
   },
   {
     title: "Canva Essentials",
     org: "Canva",
-    image: "/certificates/shahala-shaz-canva-essentials-certificate.jpg",
+    image: "/certificates/Canva Essentials.png",
   },
   {
     title: "Graphic Design Essentials",
     org: "Canva",
-    image: "/certificates/shahala-shaz-graphic-design-essentials-certificate.jpg",
-  },
-  {
-    title: "Simplilearn Certification",
-    org: "Simplilearn",
-    image: "/certificates/Simplilearn Certificate.jpg",
+    image: "/certificates/Graphic Design Essentials.png",
   },
   {
     title: "Soft Skills",
     org: "TCS",
-    image: "/certificates/TCS SOFT SKILL CERTIFICATE.jpg",
+    image: "/certificates/TCS Soft Skill.png",
   },
   {
     title: "UI/UX Design",
     org: "UI/UX",
-    image: "/certificates/UI_UX.jpg",
+    image: "/certificates/UIUX.png",
   },
 ];
+
+/* ================= INTERNSHIP ================= */
+const internships = [
+  {
+    role: "Technical Intern",
+    company: "High Court",
+    duration: "10 Days Internship · 2024",
+    image: "/events/Internship at Highcourt.png",
+    project: "Voice to Text Transcription System",
+    desc: "Completed a 10-day internship in the Technical Department of the High Court. Worked on a Voice-to-Text Transcription System using APIs, gaining exposure to real-world technical workflows, system documentation, and professional environments.",
+  },
+];
+
 
 /* ================= ANIMATION ================= */
 const sectionVariant = {
@@ -169,11 +159,13 @@ export default function Home() {
           <div className="hidden md:flex space-x-6 text-sm">
             <a href="#about">About</a>
             <a href="#education">Education</a>
+            <a href="#internship">Internship</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#events">Events</a>
             <a href="#awards">Awards</a>
             <a href="#certificates">Certificates</a>
+
             <a
               href="/resume/Shahala.pdf"
               download
@@ -186,14 +178,10 @@ export default function Home() {
           <button
             className="md:hidden text-2xl"
             onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
-          </button>
-          <button
             onClick={() => setDarkMode(!darkMode)}
             className="border px-3 py-2 rounded text-sm transition hover:bg-white hover:text-black"
           >
-            {darkMode ? "Light Mode" : "Dark Mode"}
+            ☰
           </button>
 
         </div>
@@ -236,7 +224,7 @@ export default function Home() {
           <p className="mt-4 text-xl text-gray-400">
             Python Developer | AI/ML Enthusiast
           </p>
-          
+
         </div>
 
       </motion.section>
@@ -304,6 +292,67 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
+
+      {/* ================= INTERNSHIP ================= */}
+      <motion.section
+        id="internship"
+        variants={sectionVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto px-6 py-24"
+      >
+        <h3 className="text-3xl md:text-4xl font-bold mb-14 text-center">
+          Internship Experience
+        </h3>
+
+        <div className="relative border-l border-white/30 pl-10 space-y-12">
+          {internships.map((intern, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Timeline dot */}
+              <span className="absolute -left-[22px] top-6 w-4 h-4 rounded-full bg-white" />
+
+              <div className="grid md:grid-cols-2 gap-8 border border-white/10 rounded-xl p-6">
+                {/* Image */}
+                <img
+                  src={intern.image}
+                  alt="High Court Internship"
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+
+                {/* Content */}
+                <div>
+                  <h4 className="text-2xl font-semibold">
+                    {intern.role}
+                  </h4>
+                  <p className="text-gray-400 mt-1">
+                    {intern.company} · {intern.duration}
+                  </p>
+
+                  <p className="mt-4 text-gray-300 text-sm leading-relaxed">
+                    {intern.desc}
+                  </p>
+
+                  <div className="mt-4">
+                    <span className="text-sm font-semibold">Project:</span>
+                    <p className="text-gray-400 text-sm">
+                      {intern.project}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
 
 
       {/* ================= SKILLS ================= */}
